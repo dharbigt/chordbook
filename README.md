@@ -3,9 +3,16 @@
 Chordbook is a Flask web app for browsing, searching, and editing fixed-width chord chart text files.
 It preserves legacy compatibility with the historical Codex URL and file conventions while providing a modernized Python service layer.
 
+| Song Index | Song View | Now Playing |
+|:---:|:---:|
+| ![Song index](app/static/media/images/ss1.png) | ![Song View](app/static/media/images/ss2.png) | ![Now Playing](app/static/media/images/ss3.png) 
+
 ## Purpose
 
-- Serve a private authenticated music library.
+- Serve a private authenticated music (text files) library.
+- Provide quick navigation for moving from song to song.
+- Keeps track of "played songs by incrementing a count of songs open for longer than ~DURATION.
+- Allows for individual metadata for rating, instrument, tempo, authorship, etc.
 - Preserve alignment-sensitive plain text for chord sheets.
 - Keep compatibility with legacy entrypoints and metadata format.
 
@@ -15,9 +22,9 @@ It preserves legacy compatibility with the historical Codex URL and file convent
 
 Each song file is stored as:
 
-- `chr(1)`
+- `chr(1)` (ASCII SOH start-of-heading character)
 - JSON metadata header
-- `chr(2)`
+- `chr(2)` (ASCII SOT start-of-text character)
 - raw song body text
 
 The body is rendered as preformatted monospace text so spacing remains intact.
