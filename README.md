@@ -13,6 +13,7 @@ It preserves legacy compatibility with the historical Codex URL and file convent
 - Provide quick navigation for moving from song to song.
 - Keeps track of "played songs by incrementing a count of songs open for longer than ~DURATION.
 - Allows for individual metadata for rating, instrument, tempo, authorship, etc.
+- Allows for selection/display of song "now playing" (displayed for sessions not authenticated)
 - Preserve alignment-sensitive plain text for chord sheets.
 - Keep compatibility with legacy entrypoints and metadata format.
 
