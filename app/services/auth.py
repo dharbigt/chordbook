@@ -25,6 +25,7 @@ class AuthService:
 
     def ensure_schema(self) -> None:
         """Add the google_id column if it doesn't exist yet."""
+        Path(self.db_path).parent.mkdir(parents=True, exist_ok=True)
         with self._connect() as conn:
             cols = [r[1] for r in conn.execute("PRAGMA table_info(user)").fetchall()]
             if "google_id" not in cols:
