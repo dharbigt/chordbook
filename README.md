@@ -17,6 +17,56 @@ It preserves legacy compatibility with the historical Codex URL and file convent
 - Preserve alignment-sensitive plain text for chord sheets.
 - Keep compatibility with legacy entrypoints and metadata format.
 
+
+## Keyboard Shortcuts
+
+All shortcuts are active on the **song view** page when no overlay is open.
+
+### Navigation
+
+| Key | Action |
+|-----|--------|
+| `Space` / `Enter` | Scroll one page down (wraps to top when at bottom) |
+| `B` | Scroll one page up |
+| `Q` | Next song — increments play count, then loads next random (or filtered) song |
+| `R` | Reload current song |
+
+### Rating
+
+| Key | Action |
+|-----|--------|
+| `1`–`9` | Set rating to 1–9 stars |
+| `0` | Set rating to 10 stars |
+
+### Metadata pickers
+
+| Key | Action |
+|-----|--------|
+| `G` | Open genre picker |
+| `T` | Open tempo picker |
+| `I` | Open instrument picker |
+| `E` | Open text-field editor (title, author, artist, …) |
+
+Within a picker, press the displayed **letter key** to select an option, or `Esc` / `Space` / `Enter` to dismiss.
+
+### Editing
+
+| Key | Action |
+|-----|--------|
+| `X` | Open in-browser song body editor (Emacs keymap) |
+| `U` | Open uploader — create a new song file |
+
+### Display
+
+| Key | Action |
+|-----|--------|
+| `=` | Increase font size |
+| `-` | Decrease font size |
+| `P` | Toggle now-playing indicator |
+| `?` | Show controls reference panel |
+| `Esc` | Close any open overlay or picker |
+
+
 ## Core Concepts
 
 ### Song File Format
