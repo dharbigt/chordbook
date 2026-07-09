@@ -28,13 +28,22 @@ class AuthService:
         Path(self.db_path).parent.mkdir(parents=True, exist_ok=True)
         with self._connect() as conn:
             cols = [r[1] for r in conn.execute("PRAGMA table_info(user)").fetchall()]
-            if "google_id" not in cols:
-                conn.execute("ALTER TABLE user ADD COLUMN google_id TEXT")
+            if not cols:
                 conn.execute(
-                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_user_google_id "
-                    "ON user(google_id) WHERE google_id IS NOT NULL"
+                    "CREATE TABLE user ("
+                    "user TEXT PRIMARY KEY, "
+                    "name TEXT, "
+                    "token TEXT, "
+                    "hash TEXT, "
+                    "google_id TEXT)"
                 )
-                conn.commit()
+            elif "google_id" not in cols:
+                conn.execute("ALTER TABLE user ADD COLUMN google_id TEXT")
+            conn.execute(
+                "CREATE UNIQUE INDEX IF NOT EXISTS idx_user_google_id "
+                "ON user(google_id) WHERE google_id IS NOT NULL"
+            )
+            conn.commit()
 
     def load_user_by_token(self, token: str) -> Optional[UserRecord]:
         with self._connect() as conn:
@@ -79,4 +88,3 @@ class AuthService:
             )
             conn.commit()
             return UserRecord(user=email, name=display_name, token=token)
-
