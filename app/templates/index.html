@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block body %}
+<div id="container">
+  <form id="searchForm" method="get" action="{{ url_for('main.dispatch') }}">
+    <input type="hidden" name="function" value="index">
+    <input type="hidden" name="sortby" value="{{ sort_by }}">
+    <input type="hidden" name="order" value="{{ order }}">
+    <input type="hidden" name="count" value="{{ min_count }}">
+    <input type="hidden" name="rating" value="{{ min_rating }}">
+    <input type="hidden" id="queryValue" name="q" value="{{ query }}">
+
+    <input id="queryText" type="text" value="{{ query }}" placeholder="Search metadata">
+
+    <select id="queryGenre" class="querySelect">
+      <option value="">Any Genre</option>
+      {% for option in genre_options %}
+      <option value="{{ option.value }}" {% if query_field == 'genre' and query == option.value %}selected{% endif %}>{% if option.value == '_unset' %}No genre set{% else %}{{ option.value }}{% endif %} ({{ option.count }})</option>
+      {% endfor %}
+    </select>
+
+    <select id="queryTempo" class="querySelect">
+      <option value="">Any Tempo</option>
+      {% for option in tempo_options %}
+      <option value="{{ option.value }}" {% if query_field == 'tempo' and query == option.value %}selected{% endif %}>{{ option.value }} ({{ option.count }})</option>
+      {% endfor %}
+    </select>
+
+    <select id="fieldSelect" name="field">
+      <option value="*" {% if query_field == '*' %}selected{% endif %}>All Fields</option>
+      {% for field in field_options %}
+      {% if field != '*' %}
+      <option value="{{ field }}" {% if query_field == field %}selected{% endif %}>{{ field|title }}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+    <button type="submit">Search</button>
+  </form>
+  <table id="indexTable">
+    <tr>
+      <th class="titleName sort"><a href="{{ url_for('main.dispatch', function='index', sortby='title', order='ASC' if sort_by == 'title' and order == 'DESC' else 'DESC', count=min_count, rating=min_rating, q=query, field=query_field) }}">Title</a></th>
+      <th class="selectionName sort"><a href="{{ url_for('main.dispatch', function='index', sortby='artist', order='ASC' if sort_by == 'artist' and order == 'DESC' else 'DESC', count=min_count, rating=min_rating, q=query, field=query_field) }}">Artist</a></th>
+      <th class="selectionName sort"><a href="{{ url_for('main.dispatch', function='index', sortby='count', order='ASC' if sort_by == 'count' and order == 'DESC' else 'DESC', count=min_count, rating=min_rating, q=query, field=query_field) }}">Count</a></th>
+      <th class="selectionName sort"><a href="{{ url_for('main.dispatch', function='index', sortby='date', order='ASC' if sort_by == 'date' and order == 'DESC' else 'DESC', count=min_count, rating=min_rating, q=query, field=query_field) }}">Date</a></th>
+      <th class="selectionName sort"><a href="{{ url_for('main.dispatch', function='index', sortby='rating', order='ASC' if sort_by == 'rating' and order == 'DESC' else 'DESC', count=min_count, rating=min_rating, q=query, field=query_field) }}">Rating</a></th>
+    </tr>
+    {% for item in rows %}
+    {% set view_url = url_for('main.dispatch', function='view', file_token=item.file_token, filter_q=(query if query else none), filter_field=(query_field if query else none)) %}
+    <tr>
+      <td style="text-align:right;"><a class="titleCell" href="{{ view_url }}">{{ item.header.title or item.name }}</a></td>
+      <td style="text-align:left;"><a class="tableCell" href="{{ view_url }}">{{ item.header.get('artist', '') }}</a></td>
+      <td style="text-align:center;"><a class="tableCell" href="{{ view_url }}">{{ item.header.get('count', 0) }}</a></td>
+      <td style="text-align:center;"><a class="tableCell" href="{{ view_url }}">{{ item.header.get('date', '') }}</a></td>
+      <td style="text-align:center;"><a class="tableCell" href="{{ view_url }}">{{ item.header.get('rating', 0) }}</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

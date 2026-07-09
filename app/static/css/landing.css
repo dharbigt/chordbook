@@ -1,0 +1,28 @@
+#nowPlayingDisplay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#nowPlayingTitle {
+  color: var(--feature);
+  font-size: 48px;
+  font-family: var(--variable);
+  text-shadow: 4px 4px #000;
+  margin-bottom: 12px;
+}
+
+#nowPlayingArtist {
+  color: var(--copy);
+  font-size: 24px;
+  font-family: var(--variable);
+}
+
+#nowPlayingGenre {
+  color: var(--contrast);
+  font-size: 14px;
+  font-family: var(--variable);
+  margin-top: 8px;
+}

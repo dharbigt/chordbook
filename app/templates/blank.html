@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+<div id="container">
+  {% if now_playing %}
+  <div id="nowPlayingDisplay">
+    <div id="nowPlayingTitle">{{ now_playing.title }}</div>
+    {% if now_playing.artist %}<div id="nowPlayingArtist">{{ now_playing.artist }}</div>{% endif %}
+    {% if now_playing.genre %}<div id="nowPlayingGenre">{{ now_playing.genre }}</div>{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

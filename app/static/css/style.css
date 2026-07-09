@@ -1,0 +1,302 @@
+@import "theme-codex.css";
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background-image: url("../media/images/background.png");
+  background-repeat: repeat;
+  background-color: var(--dark-background);
+  color: var(--copy);
+  font-family: var(--text);
+  min-height: 100vh;
+}
+
+div:focus {
+  outline: none;
+}
+
+#headscreen {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+#masthead {
+  background: var(--background);
+  border-bottom: thin solid var(--light-background);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 1px 1px var(--dark-background);
+  font-family: var(--title);
+  font-size: 28px;
+  height: 52px;
+  position: relative;
+  text-align: right;
+}
+
+#masthead ul {
+  display: inline;
+  text-align: left;
+  padding-inline-start: 10px;
+}
+
+#masthead a,
+#masthead a:visited {
+  color: var(--contrast);
+  display: inline;
+  position: relative;
+  text-decoration: none;
+  top: -20px;
+}
+
+ul.headerList {
+  float: left;
+  margin: 0;
+  padding-top: 30px;
+  height: 10px;
+}
+
+li.headerLink {
+  display: inline-block;
+  padding-right: 5px;
+}
+
+#username {
+  position: relative;
+  color: var(--contrast);
+  left: -10px;
+  top: 10px;
+}
+
+#body {
+  width: 100%;
+  min-height: calc(100vh - 52px);
+}
+
+#sidebar {
+  width: 15%;
+  background-color: var(--light-background);
+  float: left;
+  min-height: 0;
+}
+
+#titleValue {
+  color: var(--feature);
+  font-family: var(--text);
+  text-align: left;
+  text-shadow: 5px 5px #000;
+  font-size: 24px;
+  line-height: 1.05;
+  margin: 10px 0 8px 10px;
+}
+
+.textFieldDiv {
+  color: var(--feature);
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.textFieldLabel {
+  color: var(--copy);
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.textFieldValue {
+  color: var(--feature);
+  font-size: 12px;
+}
+
+.textFieldValue a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.textFieldValue a:hover {
+  color: var(--copy);
+  text-decoration: underline;
+}
+
+#rating {
+  margin: 10px 0 8px 10px;
+  color: var(--feature);
+  text-align: left;
+  font-size: 24px;
+}
+
+#togglebar {
+  width: 100%;
+  background-color: var(--light-background);
+  float: left;
+  display: none;
+  padding-bottom: 14px;
+}
+
+#sidebarPad {
+  display: none;
+}
+
+#selectionTitle {
+  color: var(--feature);
+  font-family: var(--text);
+  font-size: 18px;
+  text-align: center;
+  text-transform: capitalize;
+  padding: 4px 10px;
+}
+
+#selectionTable {
+  width: 100%;
+  padding: 0 10px 20px 10px;
+}
+
+.selectionTag {
+  width: 20px;
+  color: #000;
+  background-color: var(--copy);
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.selectionName {
+  color: #000;
+  background-color: var(--copy);
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+#container {
+  width: 85%;
+  background-color: var(--dark-background);
+  float: right;
+  min-height: calc(100vh - 52px);
+  padding-top: 3px;
+}
+
+#document {
+  color: var(--copy);
+  font-family: var(--fixed);
+  font-size: 20px;
+  line-height: 1.2;
+  text-align: left;
+  margin: 0;
+  padding: 0 25px;
+  white-space: pre-wrap;
+  text-shadow: 5px 5px #000;
+}
+
+.tableCell,
+.tableCell:visited {
+  color: var(--copy);
+  text-decoration: none;
+}
+
+.titleCell,
+.titleCell:visited,
+.titleName {
+  color: var(--feature);
+  text-decoration: none;
+}
+
+a {
+  color: var(--contrast);
+}
+
+#form-login {
+  padding-top: 200px;
+}
+
+#fieldset-login {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--contrast);
+  background-color: var(--background);
+  border-radius: 20px;
+  border-bottom: 2px solid var(--dark-background);
+  border-right: 2px solid var(--dark-background);
+  border-top: 2px solid var(--light-background);
+  border-left: 2px solid var(--light-background);
+  width: 40%;
+  margin-left: 30%;
+}
+
+#label-password,
+#label-name {
+  color: var(--light);
+  font-family: var(--text);
+  width: 20%;
+  font-size: 16px;
+  padding-right: 5px;
+}
+
+#input-password,
+#input-name {
+  color: var(--light);
+  border-bottom: 2px solid var(--light-background);
+  border-right: 2px solid var(--light-background);
+  border-top: 2px solid var(--dark-background);
+  border-left: 2px solid var(--dark-background);
+  background: var(--background);
+  font-family: var(--fixed);
+  font-size: 16px;
+  text-shadow: 3px 3px 2px var(--dark-background);
+  height: 18px;
+  padding: 5px;
+  width: 20%;
+}
+
+@media (max-width: 980px) {
+  #masthead {
+    font-size: 24px;
+    height: auto;
+    min-height: 52px;
+  }
+
+  #username {
+    font-size: 24px;
+    top: 12px;
+  }
+
+  #sidebar,
+  #container {
+    width: 100%;
+    float: none;
+    min-height: 0;
+  }
+
+  #titleValue {
+    font-size: 24px;
+  }
+
+  .textFieldLabel,
+  .textFieldValue {
+    font-size: 14px;
+  }
+
+  #document {
+    font-size: 20px;
+    margin: 12px;
+  }
+
+  .selectionTag,
+  .selectionName {
+    font-size: 14px;
+  }
+
+  #fieldset-login {
+    width: 92%;
+    margin-left: 4%;
+  }
+
+  #input-password,
+  #input-name {
+    width: 60%;
+  }
+}

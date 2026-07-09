@@ -1,0 +1,66 @@
+#loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
+}
+
+#loginBox {
+  background: var(--background);
+  border: 2px solid var(--copy);
+  border-radius: 24px;
+  width: 402px;
+  min-height: 498px;
+  padding: 32px 28px 52px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 260px;
+}
+
+#userField,
+#passField {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--light-background);
+  border: 1px solid var(--copy);
+  border-radius: 8px;
+  padding: 11px 14px;
+}
+
+#userIcon,
+#passIcon {
+  font-size: 20px;
+  color: var(--copy);
+}
+
+#input-name,
+#input-password {
+  flex: 1;
+  background: #efefb8;
+  border: 1px solid #d7d78a;
+  outline: none;
+  color: #111;
+  font-family: var(--variable);
+  font-size: 14px;
+  line-height: 1;
+  height: 22px;
+  padding: 0 4px;
+}
+
+#input-name::placeholder,
+#input-password::placeholder {
+  color: #666;
+}
+
+#input-name:focus,
+#input-password:focus {
+  border-color: var(--feature);
+}

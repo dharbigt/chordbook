@@ -1,0 +1,18 @@
+:root {
+  --matte-frame: #00f;
+  --background: #332000;
+  --dark-background: #110700;
+  --light-background: #221400;
+  --cell: #f00;
+  --header-cell: #ff0;
+
+  --copy: #fb0;
+  --contrast: #a70;
+  --feature: #ff0;
+  --understated: #000;
+  --light: #fff;
+
+  --text: Helvetica, Arial, sans-serif;
+  --title: FrankfurterHighlightPlain, Helvetica, Arial, sans-serif;
+  --fixed: "Lucida Sans Typewriter Std", LucidaSansTypewriterStd, LetterGothic, Courier, monospace;
+}

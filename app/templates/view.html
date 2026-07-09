@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block body %}
+<div id="sidebar">
+  <h1 id="titleValue">{{ header.get('title', '') }}</h1>
+  {% for field in fields %}
+  {% set value = header.get(field, '') %}
+  <div class="textFieldDiv" id="{{ field }}" {% if not value %}style="display:none;"{% endif %}>
+    <span class="textFieldLabel" id="{{ field }}Label">{{ field|title }}: </span>
+    <span class="textFieldValue" id="{{ field }}Value">
+      {% if value %}
+      <a href="{{ url_for('main.dispatch', function='index', q=value, field=field) }}">{{ value }}</a>
+      {% else %}
+      {{ value }}
+      {% endif %}
+    </span>
+  </div>
+  {% endfor %}
+  <div id="rating">{% for _ in range(header.get('rating', 0) | int) %}&#11088;{% endfor %}</div>
+  <div id="nowPlayingIndicator" class="{% if is_now_playing %}active{% endif %}">{% if is_now_playing %}&#9835; now playing{% endif %}</div>
+  {% if filter_q %}
+  {% if filter_field == 'genre' and filter_q == '_unset' %}{% set filter_label = 'No genre set' %}
+  {% else %}{% set filter_label = filter_q %}{% endif %}
+  <div id="filterTags">
+    <span class="filterCapsule"><a class="filterRemove" href="index.wsgi?function=view&file_token={{ filename_token }}">&#x2715;</a>&thinsp;{{ filter_label }}</span>
+  </div>
+  {% endif %}
+  <div id="togglebar">&nbsp;</div>
+  <div id="sidebarPad"></div>
+</div>
+<div id="container" tabindex="0">
+  <pre id="document">{{ content|safe }}</pre>
+  <div id="editorPanel" class="overlayPanel" style="display:none;">
+    <h2>Edit Chord Text</h2>
+    <textarea id="editorText" spellcheck="false"></textarea>
+    <div class="panelButtons">
+      <button type="button" id="editorSave">Save</button>
+      <button type="button" id="editorCancel">Cancel</button>
+    </div>
+  </div>
+  <div id="uploadPanel" class="overlayPanel" style="display:none;">
+    <h2>Upload New Chord Text</h2>
+    <label for="uploadFilename">Filename</label>
+    <input id="uploadFilename" type="text" placeholder="artist--song.txt" autocomplete="off">
+    <label for="uploadText">Content</label>
+    <textarea id="uploadText" spellcheck="false"></textarea>
+    <div class="panelButtons">
+      <button type="button" id="uploadSave">Upload</button>
+      <button type="button" id="uploadCancel">Cancel</button>
+    </div>
+  </div>
+  <input id="filename" value="{{ filename }}" hidden>
+  <input id="fileToken" value="{{ filename_token }}" hidden>
+  <input id="loadTimestamp" value="{{ load_timestamp }}" hidden>
+  <input id="filterQ" value="{{ filter_q }}" hidden>
+  <input id="filterField" value="{{ filter_field }}" hidden>
+  <input id="isNowPlaying" value="{{ '1' if is_now_playing else '' }}" hidden>
+  <textarea id="rawDocument" hidden>{{ raw_content }}</textarea>
+  <input id="newMode" value="{{ '1' if new_mode else '' }}" hidden>
+  <div id="logwindow"></div>
+</div>
+{% endblock %}

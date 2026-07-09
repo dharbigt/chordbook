@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    {% for script in js_scripts %}
+    <script src="{{ url_for('static', filename=script) }}"></script>
+    {% endfor %}
+    {% for stylesheet in css_scripts %}
+    <link rel="stylesheet" href="{{ url_for('static', filename=stylesheet) }}">
+    {% endfor %}
+  </head>
+  <body>
+    <div id="headscreen">
+      <div id="masthead">
+        <span id="username">{{ user }}</span>
+        <ul class="headerList">
+          {% for label, href in header_links %}
+          <li class="headerLink"><a href="{{ href }}">{{ label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div id="body">
+      {% block body %}{% endblock %}
+    </div>
+  </body>
+</html>

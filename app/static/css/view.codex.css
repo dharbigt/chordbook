@@ -1,0 +1,113 @@
+#logwindow {
+  height: 100px;
+  overflow: auto;
+  margin-bottom: 20px;
+}
+
+#nowPlayingIndicator {
+  margin: 8px 0 4px 10px;
+  font-size: 12px;
+  font-family: var(--variable);
+  color: var(--contrast);
+  text-align: left;
+}
+
+#nowPlayingIndicator.active {
+  color: var(--feature);
+  font-weight: bold;
+}
+
+#filterTags {
+  margin-top: 10px;
+}
+
+.filterCapsule {
+  display: inline-block;
+  background: var(--copy);
+  color: var(--dark-background);
+  border-radius: 1em;
+  padding: 2px 10px 2px 8px;
+  font-size: 12px;
+  font-family: var(--variable);
+  white-space: nowrap;
+}
+
+.filterRemove {
+  color: var(--dark-background);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.filterRemove:hover {
+  color: var(--background);
+}
+
+.overlayPanel {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(960px, calc(100% - 40px));
+  max-height: calc(100vh - 100px);
+  background: var(--background);
+  border: 2px solid var(--feature);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  padding: 16px;
+  z-index: 2000;
+  overflow: auto;
+  text-align: left;
+}
+
+.overlayPanel h2 {
+  margin: 0 0 12px;
+  font-family: var(--variable);
+  color: var(--feature);
+}
+
+.overlayPanel label {
+  display: block;
+  margin: 8px 0 4px;
+  font-family: var(--variable);
+}
+
+.overlayPanel input,
+.overlayPanel textarea {
+  width: 100%;
+  border: 1px solid var(--copy);
+  background: var(--dark-background);
+  color: var(--contrast);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.overlayPanel textarea {
+  min-height: 60vh;
+  resize: vertical;
+  white-space: pre;
+  font-family: var(--fixed);
+  line-height: 1.2;
+  tab-size: 4;
+  text-align: left;
+}
+
+.overlayPanel .CodeMirror,
+.overlayPanel .CodeMirror pre,
+.overlayPanel .CodeMirror-line,
+.overlayPanel .CodeMirror-lines {
+  text-align: left;
+}
+
+.panelButtons {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.panelButtons button {
+  border: 1px solid var(--feature);
+  background: var(--dark-background);
+  color: var(--feature);
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: var(--variable);
+}
