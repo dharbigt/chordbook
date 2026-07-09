@@ -4,8 +4,8 @@ Chordbook is a Flask web app for browsing, searching, and editing fixed-width ch
 It preserves legacy compatibility with the historical Codex URL and file conventions while providing a modernized Python service layer.
 
 | Song Index | Song View | Now Playing |
-|:---:|:---:|
-| ![Song index](app/static/media/images/ss1.png) | ![Song View](app/static/media/images/ss2.png) | ![Now Playing](app/static/media/images/ss3.png) 
+|:---:|:---:|:---:|
+| ![Song index](app/static/media/images/ss1.png) | ![Song View](app/static/media/images/ss2.png) | ![Now Playing](app/static/media/images/ss3.png) |
 
 ## Purpose
 
